@@ -7,7 +7,7 @@ public class Main {
 
         StringBuilder stringBuilderResult = new StringBuilder(checkBuzz(inputUser()));
 
-        System.out.print(stringBuilderResult.toString());
+        System.out.print(stringBuilderResult);
     }
 
     private static StringBuilder checkBuzz(String input) {
@@ -15,6 +15,8 @@ public class Main {
 
         // Need check Exception From String & Char to Int?
         int fullDigit = Integer.parseInt(input);
+
+        stringBuilderResult.append("Properties of ").append(fullDigit).append("\n");
 
         // Not natural
         if (fullDigit <= 0) {
@@ -24,27 +26,19 @@ public class Main {
 
         // Even or Odd
         if (fullDigit % 2 == 0) {
-            stringBuilderResult.append("This number is Even.\n");
+            stringBuilderResult.append("even: true\n");
+            stringBuilderResult.append("odd: false\n");
         } else {
-            stringBuilderResult.append("This number is Odd.\n");
+            stringBuilderResult.append("even: false\n");
+            stringBuilderResult.append("odd: true\n");
         }
 
         // One Digit
         if (input.length() == 1) {
             if (fullDigit == 7) {
-                stringBuilderResult.append("It is a Buzz number.\n");
-                stringBuilderResult.append("Explanation:\n");
-                stringBuilderResult.append(input + " is divisible by 7 and ends with 7.");
-
-                return stringBuilderResult;
-
+                stringBuilderResult.append("buzz: true\n");
             } else {
-                stringBuilderResult.append("It is not a Buzz number.\n");
-                stringBuilderResult.append("Explanation:\n");
-                stringBuilderResult.append(input + " is neither divisible by 7 nor does it end with 7.");
-
-
-                return stringBuilderResult;
+                stringBuilderResult.append("buzz: false\n");
             }
         } else {
             // For Big digit
@@ -53,32 +47,31 @@ public class Main {
 
             // Buzz Odd
             if (lastDigit == 7) {
-                stringBuilderResult.append("It is a Buzz number.\n");
-                stringBuilderResult.append("Explanation:\n");
-                if (fullDigit % 7 == 0) {
-                    stringBuilderResult.append(input + "is divisible by 7 and ends with 7");
-                } else {
-                    stringBuilderResult.append(input + " ends with 7.");
-                }
-
-                return stringBuilderResult;
+                stringBuilderResult.append("buzz: true\n");
             }
 
             // Buzz Even (14)
             if (fullDigit % 7 == 0) {
-                stringBuilderResult.append("It is a Buzz number.\n");
-                stringBuilderResult.append("Explanation:\n");
-                stringBuilderResult.append(input + " is divisible by 7.");
-
-                return stringBuilderResult;
+                stringBuilderResult.append("buzz: true\n");
             } else {
-                stringBuilderResult.append("It is not a Buzz number.\n");
-                stringBuilderResult.append("Explanation:\n");
-                stringBuilderResult.append(input + " is neither divisible by 7 nor does it end with 7.");
-
-                return stringBuilderResult;
+                stringBuilderResult.append("buzz: false\n");
             }
         }
+
+        // Duck check
+        boolean duck = false;
+        for (int i = 1; i < input.length(); i++) {
+
+            if (input.charAt(i) == '0') {
+                duck = true;
+                i = input.length();
+            }
+        }
+        stringBuilderResult.append("duck: ").append(duck).append("\n");
+
+
+        // Result
+        return stringBuilderResult;
 
     }
 

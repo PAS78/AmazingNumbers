@@ -1,269 +1,318 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="NumbersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-28T16:00:06" hostname="PAS78" time="1.231">
+<testsuite name="NumbersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-28T17:09:13" hostname="PAS78" time="0.982">
   <properties/>
-  <testcase name="start" classname="NumbersTest" time="1.231"/>
+  <testcase name="start" classname="NumbersTest" time="0.982"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 Enter a natural number:
 > > 0
+Properties of 0
 ?[1;31m
 Start test 2?[0m
 Enter a natural number:
-> > -1
+> > 1
+Properties of 1
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 3?[0m
 Enter a natural number:
-> > -2
+> > 2
+Properties of 2
+even: true
+odd: false
+buzz: false
+duck: false
 ?[1;31m
 Start test 4?[0m
 Enter a natural number:
-> > -3
+> > 3
+Properties of 3
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 5?[0m
 Enter a natural number:
-> > -4
+> > 4
+Properties of 4
+even: true
+odd: false
+buzz: false
+duck: false
 ?[1;31m
 Start test 6?[0m
 Enter a natural number:
-> > -5
+> > 5
+Properties of 5
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 7?[0m
 Enter a natural number:
-> > 1
-This number is Odd.
-It is not a Buzz number.
-Explanation:
+> > 6
+Properties of 6
+even: true
+odd: false
+buzz: false
+duck: false
 ?[1;31m
 Start test 8?[0m
 Enter a natural number:
-> > 2
-This number is Even.
-It is not a Buzz number.
-Explanation:
+> > 7
+Properties of 7
+even: false
+odd: true
+buzz: true
+duck: false
 ?[1;31m
 Start test 9?[0m
 Enter a natural number:
-> > 3
-This number is Odd.
-It is not a Buzz number.
-Explanation:
+> > 8
+Properties of 8
+even: true
+odd: false
+buzz: false
+duck: false
 ?[1;31m
 Start test 10?[0m
 Enter a natural number:
-> > 4
-This number is Even.
-It is not a Buzz number.
-Explanation:
+> > 9
+Properties of 9
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 11?[0m
 Enter a natural number:
-> > 5
-This number is Odd.
-It is not a Buzz number.
-Explanation:
+> > 10
+Properties of 10
+even: true
+odd: false
+buzz: false
+duck: true
 ?[1;31m
 Start test 12?[0m
 Enter a natural number:
-> > 6
-This number is Even.
-It is not a Buzz number.
-Explanation:
+> > 11
+Properties of 11
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 13?[0m
 Enter a natural number:
-> > 7
-This number is Odd.
-It is a Buzz number.
-Explanation:
+> > 12
+Properties of 12
+even: true
+odd: false
+buzz: false
+duck: false
 ?[1;31m
 Start test 14?[0m
 Enter a natural number:
-> > 8
-This number is Even.
-It is not a Buzz number.
-Explanation:
+> > 13
+Properties of 13
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 15?[0m
 Enter a natural number:
-> > 9
-This number is Odd.
-It is not a Buzz number.
-Explanation:
+> > 14
+Properties of 14
+even: true
+odd: false
+buzz: true
+duck: false
 ?[1;31m
 Start test 16?[0m
 Enter a natural number:
-> > 10
-This number is Even.
-It is not a Buzz number.
-Explanation:
+> > 10846
+Properties of 10846
+even: true
+odd: false
+buzz: false
+duck: true
 ?[1;31m
 Start test 17?[0m
 Enter a natural number:
-> > 11
-This number is Odd.
-It is not a Buzz number.
-Explanation:
+> > 8885
+Properties of 8885
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 18?[0m
 Enter a natural number:
-> > 12
-This number is Even.
-It is not a Buzz number.
-Explanation:
+> > 6638
+Properties of 6638
+even: true
+odd: false
+buzz: false
+duck: false
 ?[1;31m
 Start test 19?[0m
 Enter a natural number:
-> > 13
-This number is Odd.
-It is not a Buzz number.
-Explanation:
+> > 21712
+Properties of 21712
+even: true
+odd: false
+buzz: false
+duck: false
 ?[1;31m
 Start test 20?[0m
 Enter a natural number:
-> > 14
-This number is Even.
-It is a Buzz number.
-Explanation:
+> > 21274
+Properties of 21274
+even: true
+odd: false
+buzz: false
+duck: false
 ?[1;31m
 Start test 21?[0m
 Enter a natural number:
-> > 2424
-This number is Even.
-It is not a Buzz number.
-Explanation:
+> > 32676
+Properties of 32676
+even: true
+odd: false
+buzz: true
+duck: false
 ?[1;31m
 Start test 22?[0m
 Enter a natural number:
-> > 28367
-This number is Odd.
-It is a Buzz number.
-Explanation:
+> > 19018
+Properties of 19018
+even: true
+odd: false
+buzz: false
+duck: true
 ?[1;31m
 Start test 23?[0m
 Enter a natural number:
-> > 13324
-This number is Even.
-It is not a Buzz number.
-Explanation:
+> > 17471
+Properties of 17471
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 24?[0m
 Enter a natural number:
-> > 711
-This number is Odd.
-It is not a Buzz number.
-Explanation:
+> > 9594
+Properties of 9594
+even: true
+odd: false
+buzz: false
+duck: false
 ?[1;31m
 Start test 25?[0m
 Enter a natural number:
-> > 12200
-This number is Even.
-It is not a Buzz number.
-Explanation:
+> > 10993
+Properties of 10993
+even: false
+odd: true
+buzz: false
+duck: true
 ?[1;31m
 Start test 26?[0m
 Enter a natural number:
-> > 130
-This number is Even.
-It is not a Buzz number.
-Explanation:
+> > 25993
+Properties of 25993
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 27?[0m
 Enter a natural number:
-> > 14585
-This number is Odd.
-It is not a Buzz number.
-Explanation:
+> > 669
+Properties of 669
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 28?[0m
 Enter a natural number:
-> > 19487
-This number is Odd.
-It is a Buzz number.
-Explanation:
+> > 26725
+Properties of 26725
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 29?[0m
 Enter a natural number:
-> > 4075
-This number is Odd.
-It is not a Buzz number.
-Explanation:
+> > 31689
+Properties of 31689
+even: false
+odd: true
+buzz: true
+duck: false
 ?[1;31m
 Start test 30?[0m
 Enter a natural number:
-> > 23747
-This number is Odd.
-It is a Buzz number.
-Explanation:
+> > 9355
+Properties of 9355
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 31?[0m
 Enter a natural number:
-> > 26495
-This number is Odd.
-It is a Buzz number.
-Explanation:
+> > 31184
+Properties of 31184
+even: true
+odd: false
+buzz: false
+duck: false
 ?[1;31m
 Start test 32?[0m
 Enter a natural number:
-> > 29603
-This number is Odd.
-It is a Buzz number.
-Explanation:
+> > 8485
+Properties of 8485
+even: false
+odd: true
+buzz: false
+duck: false
 ?[1;31m
 Start test 33?[0m
 Enter a natural number:
-> > 9739
-This number is Odd.
-It is not a Buzz number.
-Explanation:
+> > 18803
+Properties of 18803
+even: false
+odd: true
+buzz: false
+duck: true
 ?[1;31m
 Start test 34?[0m
 Enter a natural number:
-> > 18259
-This number is Odd.
-It is not a Buzz number.
-Explanation:
+> > 14301
+Properties of 14301
+even: false
+odd: true
+buzz: true
+duck: true
 ?[1;31m
 Start test 35?[0m
 Enter a natural number:
-> > 10059
-This number is Odd.
-It is a Buzz number.
-Explanation:
-?[1;31m
-Start test 36?[0m
-Enter a natural number:
-> > 11502
-This number is Even.
-It is not a Buzz number.
-Explanation:
-?[1;31m
-Start test 37?[0m
-Enter a natural number:
-> > 2154
-This number is Even.
-It is not a Buzz number.
-Explanation:
-?[1;31m
-Start test 38?[0m
-Enter a natural number:
-> > 14546
-This number is Even.
-It is a Buzz number.
-Explanation:
-?[1;31m
-Start test 39?[0m
-Enter a natural number:
-> > 32054
-This number is Even.
-It is not a Buzz number.
-Explanation:
-?[1;31m
-Start test 40?[0m
-Enter a natural number:
-> > 797
-This number is Odd.
-It is a Buzz number.
-Explanation:
+> > 5195
+Properties of 5195
+even: false
+odd: true
+buzz: false
+duck: false
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
