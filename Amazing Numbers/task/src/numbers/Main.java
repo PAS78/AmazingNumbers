@@ -1,82 +1,59 @@
 package numbers;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        StringBuilder stringBuilderResult = new StringBuilder(checkBuzz(inputUser()));
+        StringBuilder stringBuilderStart = new StringBuilder("Welcome to Amazing Numbers!\n\n");
+        stringBuilderStart.append("Supported requests:\n" +
+                "- enter a natural number to know its properties;\n" +
+                "- enter 0 to exit.\n");
+        System.out.print(stringBuilderStart);
 
-        System.out.print(stringBuilderResult);
+        StringBuilder stringBuilderResult = new StringBuilder();
+
+        while (!stringBuilderResult.toString().equals("\nGoodbye!")) {
+            stringBuilderResult = checkBuzz(inputUser());
+            System.out.print(stringBuilderResult);
+        }
     }
 
     private static StringBuilder checkBuzz(String input) {
         StringBuilder stringBuilderResult = new StringBuilder();
 
-        // Need check Exception From String & Char to Int?
-        int fullDigit = Integer.parseInt(input);
+        long n = Long.parseLong(input);
 
-        stringBuilderResult.append("Properties of ").append(fullDigit).append("\n");
-
-        // Not natural
-        if (fullDigit <= 0) {
-            stringBuilderResult.append("This number is not natural!");
-            return stringBuilderResult;
+        // Palindromic check
+        boolean palindromic = false;
+        String first = input.substring(0, input.length() / 2);
+        String second = input.substring((input.length() + (input.length() % 2)) / 2);
+        StringBuilder secondReverse = new StringBuilder(second);
+        second = secondReverse.reverse().toString();
+        if (input.length() == 1 || Objects.equals(first, second)) {
+            palindromic = true;
         }
 
-        // Even or Odd
-        if (fullDigit % 2 == 0) {
-            stringBuilderResult.append("even: true\n");
-            stringBuilderResult.append("odd: false\n");
+        if (n == 0) {
+            stringBuilderResult.append("\nGoodbye!");
+        } else if (n > 0) {
+            stringBuilderResult.append("\nProperties of ").append(n).append("\n");
+            stringBuilderResult.append("\teven: ").append(n % 2 == 0).append("\n");
+            stringBuilderResult.append("\todd: ").append(n % 2 == 1).append("\n");
+            stringBuilderResult.append("\tbuzz: ").append(n >= 7 && (n % 7 == 0 || n % 10 == 7)).append("\n");
+            stringBuilderResult.append("\tduck: ").append(input.indexOf('0') > 0).append("\n");
+            stringBuilderResult.append("\tpalindromic: ").append(palindromic).append("\n");
         } else {
-            stringBuilderResult.append("even: false\n");
-            stringBuilderResult.append("odd: true\n");
+            stringBuilderResult.append("\nThe first parameter should be a natural number or zero.\n");
         }
 
-        // One Digit
-        if (input.length() == 1) {
-            if (fullDigit == 7) {
-                stringBuilderResult.append("buzz: true\n");
-            } else {
-                stringBuilderResult.append("buzz: false\n");
-            }
-        } else {
-            // For Big digit
-            int lastDigit = Integer.parseInt(input.substring(input.length() - 1));
-            int firstDigit = Integer.parseInt(input.substring(0, input.length() - 1));
-
-            // Buzz Odd
-            if (lastDigit == 7) {
-                stringBuilderResult.append("buzz: true\n");
-            }
-
-            // Buzz Even (14)
-            if (fullDigit % 7 == 0) {
-                stringBuilderResult.append("buzz: true\n");
-            } else {
-                stringBuilderResult.append("buzz: false\n");
-            }
-        }
-
-        // Duck check
-        boolean duck = false;
-        for (int i = 1; i < input.length(); i++) {
-
-            if (input.charAt(i) == '0') {
-                duck = true;
-                i = input.length();
-            }
-        }
-        stringBuilderResult.append("duck: ").append(duck).append("\n");
-
-
-        // Result
         return stringBuilderResult;
 
     }
 
     private static String inputUser() {
-        System.out.print("Enter a natural number:\n> ");
+        System.out.print("\nEnter a request: > ");
         Scanner scanner = new Scanner(System.in);
         return scanner.next().trim();
     }
