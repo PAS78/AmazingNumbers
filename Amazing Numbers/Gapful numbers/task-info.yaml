@@ -606,6 +606,9 @@ files:
         enum Parameter {ONE, TWO, THREE}
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/184/stages/934/implement#comment
-status: Unchecked
+feedback_link: https://hyperskill.org/learn/step/13201#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 30 Jan 2023 03:55:00 UTC"
 record: -1
