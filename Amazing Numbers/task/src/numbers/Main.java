@@ -15,6 +15,7 @@ public class Main {
             if (stringBuilderResult.toString().equals("Instruction")) {
                 printStartMessage();
             }
+
             stringBuilderResult = check(inputUser());
             System.out.print(stringBuilderResult);
         }
@@ -23,44 +24,54 @@ public class Main {
     private static StringBuilder check(String[] inputArray) {
         StringBuilder stringBuilderResult = new StringBuilder();
 
-        String input1 = inputArray[0];
+        String firstInputString = inputArray[0];
 
         // If empty enter
-        if (input1.equals("")) {
+        if (firstInputString.equals("")) {
             return stringBuilderResult.append("Instruction");
         }
 
-        long n = Long.parseLong(input1);
+        // Need Try-catche on not digital ?
+        long firstDigit = Long.parseLong(firstInputString);
 
         // If one param
         if (inputArray.length == 1) {
 
             // If no input = show Menu
-            if (input1.trim().equals("")) {
+            if (firstInputString.trim().equals("")) {
                 printStartMessage();
-            } else if (n == 0) {
+            } else if (firstDigit == 0) {
                 stringBuilderResult.append("\nGoodbye!");
-            } else if (n > 0) {
-                stringBuilderResult.append("\nProperties of ").append(n).append("\n");
-                stringBuilderResult.append("\teven: ").append(isEven(n)).append("\n");
-                stringBuilderResult.append("\todd: ").append(isOdd(n)).append("\n");
-                stringBuilderResult.append("\tbuzz: ").append(isBuzz(n)).append("\n");
-                stringBuilderResult.append("\tduck: ").append(isDuck(input1)).append("\n");
-                stringBuilderResult.append("\tpalindromic: ").append(isPalindromic(input1)).append("\n");
-                stringBuilderResult.append("\tgapful: ").append(isGapful(n)).append("\n");
+            } else if (firstDigit > 0) {
+                stringBuilderResult.append("\nProperties of ").append(firstDigit).append("\n");
+                stringBuilderResult.append("\teven: ").append(isEven(firstDigit)).append("\n");
+                stringBuilderResult.append("\todd: ").append(isOdd(firstDigit)).append("\n");
+                stringBuilderResult.append("\tbuzz: ").append(isBuzz(firstDigit)).append("\n");
+                stringBuilderResult.append("\tduck: ").append(isDuck(firstInputString)).append("\n");
+                stringBuilderResult.append("\tpalindromic: ").append(isPalindromic(firstInputString)).append("\n");
+                stringBuilderResult.append("\tgapful: ").append(isGapful(firstDigit)).append("\n");
+                stringBuilderResult.append("\tspy: ").append(isSpy(firstInputString)).append("\n");
             } else {
                 stringBuilderResult.append("\nThe first parameter should be a natural number or zero.\n");
             }
-        } else {
-            // If more (2) param
-            String input2 = inputArray[1];
-            long n2 = Long.parseLong(input2);
+        }
+
+        // More 1 params
+        if (inputArray.length > 1) {
+            // If 2 param
+            String secondInputString = inputArray[1];
+            // Need try-catch to Int from String?
+            long secondDigit = Long.parseLong(secondInputString);
 
             // Check second param on Natural
-            if (n2 < 1) {
+            if (secondDigit < 1) {
                 stringBuilderResult.append("The second parameter should be a natural number.\n");
-            } else {
-                for (long i = n; i < n + n2; i++) {
+                return stringBuilderResult;
+            }
+
+            // 2 params
+            if (inputArray.length == 2) {
+                for (long i = firstDigit; i < firstDigit + secondDigit; i++) {
 
                     String result = i + " is ";
 
@@ -70,6 +81,7 @@ public class Main {
                     result1 += (isEven(i) ? "even " : "");
                     result1 += (isOdd(i) ? "odd " : "");
                     result1 += (isPalindromic(String.valueOf(i)) ? "palindromic " : "");
+                    result1 += (isSpy(String.valueOf(i)) ? "spy " : "");
                     result1 = result1.trim();
                     result1 = result1.replace(" ", ", ");
 
@@ -79,29 +91,69 @@ public class Main {
                 }
             }
 
+            // 3 params
+            if (inputArray.length == 3) {
+                // If 3 param
+                // Check correct Input param3
+                String[] paramArray = new String[]{"buzz", "duck", "palindromic", "gapful", "spy", "even", "odd"};
+                Boolean status = false;
+                for (String param : paramArray) {
+                    if ((inputArray[2].contains(param))) {
+                        status = true;
+                        break;
+                    }
+                }
+
+                if (!status) {
+                    stringBuilderResult.append("The property [").append(inputArray[2].toUpperCase()).append("] is wrong.").append("\n");
+                    stringBuilderResult.append("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]").append("\n");
+
+                    return stringBuilderResult;
+                } else {
+                    for (long i = firstDigit, count = 0; count < secondDigit; i++) {
+
+                        String result = i + " is ";
+
+                        String result1 = (isBuzz(i) ? "buzz " : "");
+                        result1 += (isDuck(String.valueOf(i)) ? "duck " : "");
+                        result1 += (isGapful(i) ? "gapful " : "");
+                        result1 += (isEven(i) ? "even " : "");
+                        result1 += (isOdd(i) ? "odd " : "");
+                        result1 += (isPalindromic(String.valueOf(i)) ? "palindromic " : "");
+                        result1 += (isSpy(String.valueOf(i)) ? "spy " : "");
+                        result1 = result1.trim();
+                        result1 = result1.replace(" ", ", ");
+
+                        result += result1 + "\n";
+
+                        if (result.contains(inputArray[2])) {
+                            count++;
+                            stringBuilderResult.append(result);
+                        }
+                    }
+                }
+
+            }
+
         }
 
         return stringBuilderResult;
-
     }
 
-    private static String[] inputUser() {
-        System.out.print("\nEnter a request: > ");
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine().trim().split(" ");
-    }
+    private static boolean isSpy(String input1) {
 
-    private static void printStartMessage() {
-        String startMessage = "Welcome to Amazing Numbers!\n" +
-                "\n" +
-                "Supported requests:\n" +
-                "- enter a natural number to know its properties;\n" +
-                "- enter two natural numbers to obtain the properties of the list:\n" +
-                "  * the first parameter represents a starting number;\n" +
-                "  * the second parameter shows how many consecutive numbers are to be processed;\n" +
-                "- separate the parameters with one space;\n" +
-                "- enter 0 to exit.";
-        System.out.println(startMessage);
+        char[] charArray = input1.toCharArray();
+
+        long summ = 0;
+        long proizveden = 1;
+
+        for (int i = 0; i < charArray.length; i++) {
+            long x = Long.parseLong(String.valueOf(charArray[i]));
+            summ += x;
+            proizveden *= x;
+        }
+
+        return summ == proizveden;
     }
 
     private static boolean isBuzz(long n) {
@@ -147,6 +199,26 @@ public class Main {
 
         } else return false;
 
+    }
+
+    private static String[] inputUser() {
+        System.out.print("\nEnter a request: ");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine().toLowerCase().trim().split(" ");
+    }
+
+    private static void printStartMessage() {
+        String startMessage = "Welcome to Amazing Numbers!\n" +
+                "\n" +
+                "Supported requests:\n" +
+                "- enter a natural number to know its properties;\n" +
+                "- enter two natural numbers to obtain the properties of the list:\n" +
+                "  * the first parameter represents a starting number;\n" +
+                "  * the second parameters show how many consecutive numbers are to be processed;\n" +
+                "- two natural numbers and a property to search for;\n" +
+                "- separate the parameters with one space;\n" +
+                "- enter 0 to exit.";
+        System.out.println(startMessage);
     }
 
 }

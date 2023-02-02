@@ -690,5 +690,8 @@ files:
     }
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/13202#comment
-status: Unchecked
-record: -1
+status: Failed
+feedback:
+  message: Test class can only have one constructor
+  time: "Thu, 02 Feb 2023 03:05:19 UTC"
+record: 5

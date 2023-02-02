@@ -1,0 +1,30 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: class
+- text: new
+- text: interface
+- text: struct
+- text: object
+- text: type
+files:
+- name: src/Task.java
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    public class Task {
+      public static void main(String[] args) {
+        // put your code here
+      }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/1974#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Mon, 30 Jan 2023 12:01:58 UTC"
+record: -1
+selected_options:
+- 0
+local_check: false

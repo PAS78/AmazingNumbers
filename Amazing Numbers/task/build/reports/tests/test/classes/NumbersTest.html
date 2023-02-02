@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">2.598s</div>
+<div class="counter">1.681s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,13 +61,92 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Standard output</a>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="start"></a>
+<h3 class="failures">start</h3>
+<span class="code">
+<pre>java.lang.AssertionError: Wrong answer in test #36
+
+Expected 11 non blank lines but actual output contains 3 lines.
+
+Please find below the output of your program during this failed test.
+Note that the '&gt;' character indicates the beginning of the input line.
+
+---
+
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter two natural numbers to obtain the properties of the list:
+  * the first parameter represents a starting number;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
+- separate the parameters with one space;
+- enter 0 to exit.
+
+Enter a request: &gt; 1 10 BUZZ
+The property [BUZZ] is wrong.
+Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]
+
+Enter a request:
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:203)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -78,13 +157,13 @@
 </tr>
 </thead>
 <tr>
-<td class="success">start</td>
-<td class="success">2.598s</td>
-<td class="success">passed</td>
+<td class="failures">start</td>
+<td class="failures">1.681s</td>
+<td class="failures">failed</td>
 </tr>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
 <pre>?[1;31m
@@ -95,11 +174,12 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 2?[0m
@@ -109,15 +189,16 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; -65
+Enter a request: &gt; -118
 
 The first parameter should be a natural number or zero.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 3?[0m
@@ -127,15 +208,16 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; -7
+Enter a request: &gt; -28
 
 The first parameter should be a natural number or zero.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 4?[0m
@@ -145,15 +227,16 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; -91
+Enter a request: &gt; -53
 
 The first parameter should be a natural number or zero.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 5?[0m
@@ -163,15 +246,16 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; -68
+Enter a request: &gt; -126
 
 The first parameter should be a natural number or zero.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 6?[0m
@@ -181,15 +265,16 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; -87
+Enter a request: &gt; -27
 
 The first parameter should be a natural number or zero.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 7?[0m
@@ -199,14 +284,15 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 5497 -1553
+Enter a request: &gt; 12636 -14093
 The second parameter should be a natural number.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 8?[0m
@@ -216,14 +302,15 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 14118 -3348
+Enter a request: &gt; 27481 -30848
 The second parameter should be a natural number.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 9?[0m
@@ -233,14 +320,15 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 28859 -8404
+Enter a request: &gt; 17150 -24637
 The second parameter should be a natural number.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 10?[0m
@@ -250,14 +338,15 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 32640 -19328
+Enter a request: &gt; 17481 -10054
 The second parameter should be a natural number.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 11?[0m
@@ -267,14 +356,15 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 24080 -12686
+Enter a request: &gt; 25439 -32125
 The second parameter should be a natural number.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 12?[0m
@@ -284,14 +374,15 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 22972 -10482
+Enter a request: &gt; 16924 -22941
 The second parameter should be a natural number.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 13?[0m
@@ -301,14 +392,15 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 6887 -21615
+Enter a request: &gt; 3807 -23186
 The second parameter should be a natural number.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 14?[0m
@@ -318,14 +410,15 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 21144 -5984
+Enter a request: &gt; 30146 -32624
 The second parameter should be a natural number.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 15?[0m
@@ -335,14 +428,15 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 26780 -19489
+Enter a request: &gt; 21293 -9725
 The second parameter should be a natural number.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 16?[0m
@@ -352,14 +446,15 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 7082 -29296
+Enter a request: &gt; 15553 -22720
 The second parameter should be a natural number.
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 17?[0m
@@ -369,11 +464,12 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 1
+Enter a request: &gt; 1
 
 Properties of 1
 	even: false
@@ -382,8 +478,9 @@ Properties of 1
 	duck: false
 	palindromic: true
 	gapful: false
+	spy: true
 
-Enter a request: &gt; &gt; 2
+Enter a request: &gt; 2
 
 Properties of 2
 	even: true
@@ -392,8 +489,9 @@ Properties of 2
 	duck: false
 	palindromic: true
 	gapful: false
+	spy: true
 
-Enter a request: &gt; &gt; 3
+Enter a request: &gt; 3
 
 Properties of 3
 	even: false
@@ -402,8 +500,9 @@ Properties of 3
 	duck: false
 	palindromic: true
 	gapful: false
+	spy: true
 
-Enter a request: &gt; &gt; 4
+Enter a request: &gt; 4
 
 Properties of 4
 	even: true
@@ -412,8 +511,9 @@ Properties of 4
 	duck: false
 	palindromic: true
 	gapful: false
+	spy: true
 
-Enter a request: &gt; &gt; 5
+Enter a request: &gt; 5
 
 Properties of 5
 	even: false
@@ -422,8 +522,9 @@ Properties of 5
 	duck: false
 	palindromic: true
 	gapful: false
+	spy: true
 
-Enter a request: &gt; &gt; 6
+Enter a request: &gt; 6
 
 Properties of 6
 	even: true
@@ -432,8 +533,9 @@ Properties of 6
 	duck: false
 	palindromic: true
 	gapful: false
+	spy: true
 
-Enter a request: &gt; &gt; 7
+Enter a request: &gt; 7
 
 Properties of 7
 	even: false
@@ -442,8 +544,9 @@ Properties of 7
 	duck: false
 	palindromic: true
 	gapful: false
+	spy: true
 
-Enter a request: &gt; &gt; 8
+Enter a request: &gt; 8
 
 Properties of 8
 	even: true
@@ -452,8 +555,9 @@ Properties of 8
 	duck: false
 	palindromic: true
 	gapful: false
+	spy: true
 
-Enter a request: &gt; &gt; 9
+Enter a request: &gt; 9
 
 Properties of 9
 	even: false
@@ -462,8 +566,9 @@ Properties of 9
 	duck: false
 	palindromic: true
 	gapful: false
+	spy: true
 
-Enter a request: &gt; &gt; 10
+Enter a request: &gt; 10
 
 Properties of 10
 	even: true
@@ -472,8 +577,9 @@ Properties of 10
 	duck: true
 	palindromic: false
 	gapful: false
+	spy: false
 
-Enter a request: &gt; &gt; 11
+Enter a request: &gt; 11
 
 Properties of 11
 	even: false
@@ -482,8 +588,9 @@ Properties of 11
 	duck: false
 	palindromic: true
 	gapful: false
+	spy: false
 
-Enter a request: &gt; &gt; 12
+Enter a request: &gt; 12
 
 Properties of 12
 	even: true
@@ -492,8 +599,9 @@ Properties of 12
 	duck: false
 	palindromic: false
 	gapful: false
+	spy: false
 
-Enter a request: &gt; &gt; 13
+Enter a request: &gt; 13
 
 Properties of 13
 	even: false
@@ -502,8 +610,9 @@ Properties of 13
 	duck: false
 	palindromic: false
 	gapful: false
+	spy: false
 
-Enter a request: &gt; &gt; 14
+Enter a request: &gt; 14
 
 Properties of 14
 	even: true
@@ -512,108 +621,119 @@ Properties of 14
 	duck: false
 	palindromic: false
 	gapful: false
+	spy: false
 
-Enter a request: &gt; &gt; 8831928067730576119
+Enter a request: &gt; 5350358409357999023
 
-Properties of 8831928067730576119
-	even: false
-	odd: true
-	buzz: false
-	duck: true
-	palindromic: false
-	gapful: false
-
-Enter a request: &gt; &gt; 339598574991616043
-
-Properties of 339598574991616043
-	even: false
-	odd: true
-	buzz: false
-	duck: true
-	palindromic: false
-	gapful: false
-
-Enter a request: &gt; &gt; 2242620211094861888
-
-Properties of 2242620211094861888
-	even: true
-	odd: false
-	buzz: false
-	duck: true
-	palindromic: false
-	gapful: false
-
-Enter a request: &gt; &gt; 7997890509451605885
-
-Properties of 7997890509451605885
-	even: false
-	odd: true
-	buzz: false
-	duck: true
-	palindromic: false
-	gapful: false
-
-Enter a request: &gt; &gt; 8688090889532712524
-
-Properties of 8688090889532712524
-	even: true
-	odd: false
-	buzz: false
-	duck: true
-	palindromic: false
-	gapful: false
-
-Enter a request: &gt; &gt; 3191743085460327248
-
-Properties of 3191743085460327248
-	even: true
-	odd: false
-	buzz: false
-	duck: true
-	palindromic: false
-	gapful: false
-
-Enter a request: &gt; &gt; 2343614448902236894
-
-Properties of 2343614448902236894
-	even: true
-	odd: false
-	buzz: false
-	duck: true
-	palindromic: false
-	gapful: false
-
-Enter a request: &gt; &gt; 8427692910157830578
-
-Properties of 8427692910157830578
-	even: true
-	odd: false
-	buzz: false
-	duck: true
-	palindromic: false
-	gapful: false
-
-Enter a request: &gt; &gt; 8085991682344464080
-
-Properties of 8085991682344464080
-	even: true
-	odd: false
-	buzz: false
-	duck: true
-	palindromic: false
-	gapful: true
-
-Enter a request: &gt; &gt; 4900056673784265637
-
-Properties of 4900056673784265637
+Properties of 5350358409357999023
 	even: false
 	odd: true
 	buzz: true
 	duck: true
 	palindromic: false
 	gapful: false
+	spy: false
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 3136462589944435922
+
+Properties of 3136462589944435922
+	even: true
+	odd: false
+	buzz: false
+	duck: false
+	palindromic: false
+	gapful: false
+	spy: false
+
+Enter a request: &gt; 7098900615362714433
+
+Properties of 7098900615362714433
+	even: false
+	odd: true
+	buzz: false
+	duck: true
+	palindromic: false
+	gapful: false
+	spy: false
+
+Enter a request: &gt; 9215034765945736368
+
+Properties of 9215034765945736368
+	even: true
+	odd: false
+	buzz: false
+	duck: true
+	palindromic: false
+	gapful: false
+	spy: false
+
+Enter a request: &gt; 4073557242367496046
+
+Properties of 4073557242367496046
+	even: true
+	odd: false
+	buzz: false
+	duck: true
+	palindromic: false
+	gapful: false
+	spy: false
+
+Enter a request: &gt; 7730777421024433611
+
+Properties of 7730777421024433611
+	even: false
+	odd: true
+	buzz: false
+	duck: true
+	palindromic: false
+	gapful: false
+	spy: false
+
+Enter a request: &gt; 8221014406601844190
+
+Properties of 8221014406601844190
+	even: true
+	odd: false
+	buzz: true
+	duck: true
+	palindromic: false
+	gapful: false
+	spy: false
+
+Enter a request: &gt; 7511985102257607916
+
+Properties of 7511985102257607916
+	even: true
+	odd: false
+	buzz: true
+	duck: true
+	palindromic: false
+	gapful: false
+	spy: false
+
+Enter a request: &gt; 4481018321863690223
+
+Properties of 4481018321863690223
+	even: false
+	odd: true
+	buzz: false
+	duck: true
+	palindromic: false
+	gapful: false
+	spy: false
+
+Enter a request: &gt; 3378555519840561614
+
+Properties of 3378555519840561614
+	even: true
+	odd: false
+	buzz: false
+	duck: true
+	palindromic: false
+	gapful: false
+	spy: false
+
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 18?[0m
@@ -623,20 +743,21 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 1 15
-1 is odd, palindromic
-2 is even, palindromic
-3 is odd, palindromic
-4 is even, palindromic
-5 is odd, palindromic
-6 is even, palindromic
-7 is buzz, odd, palindromic
-8 is even, palindromic
-9 is odd, palindromic
+Enter a request: &gt; 1 15
+1 is odd, palindromic, spy
+2 is even, palindromic, spy
+3 is odd, palindromic, spy
+4 is even, palindromic, spy
+5 is odd, palindromic, spy
+6 is even, palindromic, spy
+7 is buzz, odd, palindromic, spy
+8 is even, palindromic, spy
+9 is odd, palindromic, spy
 10 is duck, even
 11 is odd, palindromic
 12 is even
@@ -644,7 +765,7 @@ Enter a request: &gt; &gt; 1 15
 14 is buzz, even
 15 is odd
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 19?[0m
@@ -654,23 +775,31 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 4845979454803509193 10
-4845979454803509193 is duck, odd
-4845979454803509194 is duck, even
-4845979454803509195 is duck, gapful, odd
-4845979454803509196 is duck, even
-4845979454803509197 is buzz, duck, odd
-4845979454803509198 is duck, even
-4845979454803509199 is duck, odd
-4845979454803509200 is duck, gapful, even
-4845979454803509201 is duck, odd
-4845979454803509202 is duck, even
+Enter a request: &gt; 6678265120626681420 17
+6678265120626681420 is duck, gapful, even
+6678265120626681421 is buzz, duck, odd
+6678265120626681422 is duck, even
+6678265120626681423 is duck, odd
+6678265120626681424 is duck, even
+6678265120626681425 is duck, odd
+6678265120626681426 is duck, even
+6678265120626681427 is buzz, duck, odd
+6678265120626681428 is buzz, duck, even
+6678265120626681429 is duck, odd
+6678265120626681430 is duck, even
+6678265120626681431 is duck, odd
+6678265120626681432 is duck, even
+6678265120626681433 is duck, odd
+6678265120626681434 is duck, even
+6678265120626681435 is buzz, duck, odd
+6678265120626681436 is duck, even
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 20?[0m
@@ -680,30 +809,33 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 8965882799009266731 17
-8965882799009266731 is duck, odd
-8965882799009266732 is buzz, duck, even
-8965882799009266733 is duck, odd
-8965882799009266734 is duck, even
-8965882799009266735 is duck, odd
-8965882799009266736 is duck, even
-8965882799009266737 is buzz, duck, odd
-8965882799009266738 is duck, even
-8965882799009266739 is buzz, duck, odd
-8965882799009266740 is duck, even
-8965882799009266741 is duck, odd
-8965882799009266742 is duck, even
-8965882799009266743 is duck, odd
-8965882799009266744 is duck, even
-8965882799009266745 is duck, odd
-8965882799009266746 is buzz, duck, even
-8965882799009266747 is buzz, duck, odd
+Enter a request: &gt; 2173317228006652858 19
+2173317228006652858 is duck, even
+2173317228006652859 is duck, odd
+2173317228006652860 is duck, gapful, even
+2173317228006652861 is buzz, duck, odd
+2173317228006652862 is duck, even
+2173317228006652863 is duck, odd
+2173317228006652864 is duck, even
+2173317228006652865 is duck, odd
+2173317228006652866 is duck, even
+2173317228006652867 is buzz, duck, odd
+2173317228006652868 is buzz, duck, gapful, even
+2173317228006652869 is duck, odd
+2173317228006652870 is duck, even
+2173317228006652871 is duck, odd
+2173317228006652872 is duck, even
+2173317228006652873 is duck, odd
+2173317228006652874 is duck, even
+2173317228006652875 is buzz, duck, gapful, odd
+2173317228006652876 is duck, even
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 21?[0m
@@ -713,32 +845,18 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 1839656800529320441 19
-1839656800529320441 is duck, odd
-1839656800529320442 is duck, even
-1839656800529320443 is duck, odd
-1839656800529320444 is buzz, duck, gapful, even
-1839656800529320445 is duck, odd
-1839656800529320446 is duck, even
-1839656800529320447 is buzz, duck, odd
-1839656800529320448 is duck, even
-1839656800529320449 is duck, odd
-1839656800529320450 is duck, gapful, even
-1839656800529320451 is buzz, duck, odd
-1839656800529320452 is duck, gapful, even
-1839656800529320453 is duck, odd
-1839656800529320454 is duck, even
-1839656800529320455 is duck, gapful, odd
-1839656800529320456 is duck, even
-1839656800529320457 is buzz, duck, odd
-1839656800529320458 is buzz, duck, even
-1839656800529320459 is duck, odd
+Enter a request: &gt; 3027941930750772248 4
+3027941930750772248 is duck, even
+3027941930750772249 is duck, odd
+3027941930750772250 is duck, even
+3027941930750772251 is duck, odd
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 22?[0m
@@ -748,20 +866,31 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 7084455688366219664 7
-7084455688366219664 is duck, even
-7084455688366219665 is duck, odd
-7084455688366219666 is duck, even
-7084455688366219667 is buzz, duck, odd
-7084455688366219668 is duck, even
-7084455688366219669 is duck, odd
-7084455688366219670 is duck, even
+Enter a request: &gt; 6362216783316475000 17
+6362216783316475000 is duck, even
+6362216783316475001 is duck, odd
+6362216783316475002 is duck, even
+6362216783316475003 is duck, odd
+6362216783316475004 is buzz, duck, even
+6362216783316475005 is duck, odd
+6362216783316475006 is duck, even
+6362216783316475007 is buzz, duck, odd
+6362216783316475008 is duck, even
+6362216783316475009 is duck, odd
+6362216783316475010 is duck, even
+6362216783316475011 is buzz, duck, odd
+6362216783316475012 is duck, even
+6362216783316475013 is duck, odd
+6362216783316475014 is duck, even
+6362216783316475015 is duck, odd
+6362216783316475016 is duck, even
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 23?[0m
@@ -771,25 +900,30 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 2466979606786373493 12
-2466979606786373493 is duck, odd
-2466979606786373494 is duck, even
-2466979606786373495 is duck, odd
-2466979606786373496 is duck, even
-2466979606786373497 is buzz, duck, odd
-2466979606786373498 is duck, even
-2466979606786373499 is duck, odd
-2466979606786373500 is duck, gapful, even
-2466979606786373501 is duck, odd
-2466979606786373502 is duck, even
-2466979606786373503 is duck, odd
-2466979606786373504 is buzz, duck, even
+Enter a request: &gt; 1594100814084853143 16
+1594100814084853143 is duck, odd
+1594100814084853144 is buzz, duck, gapful, even
+1594100814084853145 is duck, odd
+1594100814084853146 is duck, even
+1594100814084853147 is buzz, duck, odd
+1594100814084853148 is duck, even
+1594100814084853149 is duck, odd
+1594100814084853150 is duck, gapful, even
+1594100814084853151 is buzz, duck, gapful, odd
+1594100814084853152 is duck, gapful, even
+1594100814084853153 is duck, odd
+1594100814084853154 is duck, even
+1594100814084853155 is duck, gapful, odd
+1594100814084853156 is duck, even
+1594100814084853157 is buzz, duck, gapful, odd
+1594100814084853158 is buzz, duck, even
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 24?[0m
@@ -799,31 +933,30 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 1821083016537227391 18
-1821083016537227391 is duck, odd
-1821083016537227392 is duck, even
-1821083016537227393 is duck, odd
-1821083016537227394 is buzz, duck, gapful, even
-1821083016537227395 is duck, odd
-1821083016537227396 is duck, even
-1821083016537227397 is buzz, duck, odd
-1821083016537227398 is duck, even
-1821083016537227399 is duck, odd
-1821083016537227400 is duck, gapful, even
-1821083016537227401 is buzz, duck, odd
-1821083016537227402 is duck, even
-1821083016537227403 is duck, odd
-1821083016537227404 is duck, even
-1821083016537227405 is duck, odd
-1821083016537227406 is duck, even
-1821083016537227407 is buzz, duck, odd
-1821083016537227408 is buzz, duck, even
+Enter a request: &gt; 8986537533498940559 16
+8986537533498940559 is duck, odd
+8986537533498940560 is duck, gapful, even
+8986537533498940561 is duck, odd
+8986537533498940562 is buzz, duck, even
+8986537533498940563 is duck, odd
+8986537533498940564 is duck, even
+8986537533498940565 is duck, odd
+8986537533498940566 is duck, even
+8986537533498940567 is buzz, duck, odd
+8986537533498940568 is duck, even
+8986537533498940569 is buzz, duck, odd
+8986537533498940570 is duck, even
+8986537533498940571 is duck, odd
+8986537533498940572 is duck, even
+8986537533498940573 is duck, odd
+8986537533498940574 is duck, even
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 25?[0m
@@ -833,27 +966,28 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 869999157869726284 14
-869999157869726284 is even
-869999157869726285 is odd
-869999157869726286 is even
-869999157869726287 is buzz, odd
-869999157869726288 is even
-869999157869726289 is odd
-869999157869726290 is buzz, duck, even
-869999157869726291 is odd
-869999157869726292 is even
-869999157869726293 is odd
-869999157869726294 is even
-869999157869726295 is odd
-869999157869726296 is even
-869999157869726297 is buzz, odd
+Enter a request: &gt; 6725276176738320218 14
+6725276176738320218 is duck, even
+6725276176738320219 is duck, odd
+6725276176738320220 is duck, even
+6725276176738320221 is duck, odd
+6725276176738320222 is buzz, duck, even
+6725276176738320223 is duck, odd
+6725276176738320224 is duck, even
+6725276176738320225 is duck, odd
+6725276176738320226 is duck, even
+6725276176738320227 is buzz, duck, odd
+6725276176738320228 is duck, even
+6725276176738320229 is buzz, duck, odd
+6725276176738320230 is duck, even
+6725276176738320231 is duck, odd
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 26?[0m
@@ -863,28 +997,27 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 4909674930585458940 15
-4909674930585458940 is duck, even
-4909674930585458941 is duck, odd
-4909674930585458942 is duck, even
-4909674930585458943 is buzz, duck, odd
-4909674930585458944 is duck, even
-4909674930585458945 is duck, odd
-4909674930585458946 is duck, even
-4909674930585458947 is buzz, duck, odd
-4909674930585458948 is duck, even
-4909674930585458949 is duck, odd
-4909674930585458950 is buzz, duck, even
-4909674930585458951 is duck, odd
-4909674930585458952 is duck, even
-4909674930585458953 is duck, gapful, odd
-4909674930585458954 is duck, even
+Enter a request: &gt; 3397996724121161896 13
+3397996724121161896 is even
+3397996724121161897 is buzz, odd
+3397996724121161898 is even
+3397996724121161899 is odd
+3397996724121161900 is duck, even
+3397996724121161901 is duck, odd
+3397996724121161902 is duck, even
+3397996724121161903 is duck, odd
+3397996724121161904 is buzz, duck, even
+3397996724121161905 is duck, odd
+3397996724121161906 is duck, even
+3397996724121161907 is buzz, duck, odd
+3397996724121161908 is duck, even
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 27?[0m
@@ -894,18 +1027,33 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 7644619899982707346 5
-7644619899982707346 is duck, even
-7644619899982707347 is buzz, duck, odd
-7644619899982707348 is buzz, duck, even
-7644619899982707349 is duck, odd
-7644619899982707350 is duck, even
+Enter a request: &gt; 5918048247169976870 19
+5918048247169976870 is duck, even
+5918048247169976871 is duck, odd
+5918048247169976872 is duck, even
+5918048247169976873 is duck, odd
+5918048247169976874 is duck, even
+5918048247169976875 is duck, odd
+5918048247169976876 is buzz, duck, even
+5918048247169976877 is buzz, duck, odd
+5918048247169976878 is duck, even
+5918048247169976879 is duck, odd
+5918048247169976880 is duck, even
+5918048247169976881 is duck, odd
+5918048247169976882 is duck, even
+5918048247169976883 is buzz, duck, odd
+5918048247169976884 is duck, even
+5918048247169976885 is duck, gapful, odd
+5918048247169976886 is duck, even
+5918048247169976887 is buzz, duck, odd
+5918048247169976888 is duck, even
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
 
 ?[1;31m
 Start test 28?[0m
@@ -915,26 +1063,166 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameter shows how many consecutive numbers are to be processed;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
 - separate the parameters with one space;
 - enter 0 to exit.
 
-Enter a request: &gt; &gt; 2843942635731089937 13
-2843942635731089937 is buzz, duck, odd
-2843942635731089938 is duck, even
-2843942635731089939 is duck, odd
-2843942635731089940 is duck, gapful, even
-2843942635731089941 is duck, odd
-2843942635731089942 is buzz, duck, even
-2843942635731089943 is duck, odd
-2843942635731089944 is duck, even
-2843942635731089945 is duck, odd
-2843942635731089946 is duck, even
-2843942635731089947 is buzz, duck, odd
-2843942635731089948 is duck, even
-2843942635731089949 is buzz, duck, odd
+Enter a request: &gt; 5990101102728371843 2
+5990101102728371843 is duck, odd
+5990101102728371844 is duck, even
 
-Enter a request: &gt; &gt; 0
+Enter a request: &gt; 0
+
+?[1;31m
+Start test 29?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter two natural numbers to obtain the properties of the list:
+  * the first parameter represents a starting number;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
+- separate the parameters with one space;
+- enter 0 to exit.
+
+Enter a request: &gt; 1 10 May
+The property [MAY] is wrong.
+Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]
+
+Enter a request: &gt; 0
+
+?[1;31m
+Start test 30?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter two natural numbers to obtain the properties of the list:
+  * the first parameter represents a starting number;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
+- separate the parameters with one space;
+- enter 0 to exit.
+
+Enter a request: &gt; 40 2 bay
+The property [BAY] is wrong.
+Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]
+
+Enter a request: &gt; 0
+
+?[1;31m
+Start test 31?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter two natural numbers to obtain the properties of the list:
+  * the first parameter represents a starting number;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
+- separate the parameters with one space;
+- enter 0 to exit.
+
+Enter a request: &gt; 37 4 8
+The property [8] is wrong.
+Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]
+
+Enter a request: &gt; 0
+
+?[1;31m
+Start test 32?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter two natural numbers to obtain the properties of the list:
+  * the first parameter represents a starting number;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
+- separate the parameters with one space;
+- enter 0 to exit.
+
+Enter a request: &gt; 67 2 day
+The property [DAY] is wrong.
+Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]
+
+Enter a request: &gt; 0
+
+?[1;31m
+Start test 33?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter two natural numbers to obtain the properties of the list:
+  * the first parameter represents a starting number;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
+- separate the parameters with one space;
+- enter 0 to exit.
+
+Enter a request: &gt; 2 54 Prime
+The property [PRIME] is wrong.
+Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]
+
+Enter a request: &gt; 0
+
+?[1;31m
+Start test 34?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter two natural numbers to obtain the properties of the list:
+  * the first parameter represents a starting number;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
+- separate the parameters with one space;
+- enter 0 to exit.
+
+Enter a request: &gt; 6 8 ...
+The property [...] is wrong.
+Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]
+
+Enter a request: &gt; 0
+
+?[1;31m
+Start test 35?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter two natural numbers to obtain the properties of the list:
+  * the first parameter represents a starting number;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
+- separate the parameters with one space;
+- enter 0 to exit.
+
+Enter a request: &gt; 5 9 none
+The property [NONE] is wrong.
+Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]
+
+Enter a request: &gt; 0
+
+?[1;31m
+Start test 36?[0m
+Welcome to Amazing Numbers!
+
+Supported requests:
+- enter a natural number to know its properties;
+- enter two natural numbers to obtain the properties of the list:
+  * the first parameter represents a starting number;
+  * the second parameters show how many consecutive numbers are to be processed;
+- two natural numbers and a property to search for;
+- separate the parameters with one space;
+- enter 0 to exit.
+
+Enter a request: &gt; 1 10 BUZZ
+The property [BUZZ] is wrong.
+Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD]
 
 </pre>
 </span>
@@ -947,7 +1235,7 @@ Enter a request: &gt; &gt; 0
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.3.3</a> at 30 янв. 2023 г., 06:54:59</p>
+<a href="http://www.gradle.org">Gradle 7.3.3</a> at 2 февр. 2023 г., 06:05:18</p>
 </div>
 </div>
 </body>
