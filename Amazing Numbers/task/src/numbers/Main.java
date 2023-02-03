@@ -1,8 +1,6 @@
 package numbers;
 
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -24,7 +22,7 @@ public class Main {
     }
 
     private static ArrayList<String> checkInput(String[] inputArray) {
-        String[] paramArray = new String[]{"buzz", "duck", "palindromic", "gapful", "spy", "even", "odd", "square", "sunny", "jumping"};
+        String[] paramArray = new String[]{"buzz", "duck", "palindromic", "gapful", "spy", "even", "odd", "square", "sunny", "jumping", "happy", "sad"};
         ArrayList<String> result = new ArrayList<>();
 
         boolean equals = false;
@@ -32,7 +30,8 @@ public class Main {
         for (int i = 2; i < inputArray.length; i++) {
 
             for (String s : paramArray) {
-                if (s.equals(inputArray[i])) {
+                String sMinus = "-" + s;
+                if (s.equals(inputArray[i]) || sMinus.equals(inputArray[i])) {
                     equals = true;
                     break;
                 } else {
@@ -47,6 +46,27 @@ public class Main {
         }
 
         return result;
+    }
+
+    static boolean isHappyNumber(long n) {
+        HashSet<Long> st = new HashSet<>();
+        while (true) {
+            n = numSquareSum(n);
+            if (n == 1)
+                return true;
+            if (st.contains(n))
+                return false;
+            st.add(n);
+        }
+    }
+
+    static long numSquareSum(long n) {
+        int squareSum = 0;
+        while (n != 0) {
+            squareSum += (n % 10) * (n % 10);
+            n /= 10;
+        }
+        return squareSum;
     }
 
     private static boolean isJumping(long n) {
@@ -150,6 +170,7 @@ public class Main {
                 "  * the first parameter represents a starting number;\n" +
                 "  * the second parameter shows how many consecutive numbers are to be processed;\n" +
                 "- two natural numbers and properties to search for;\n" +
+                "- a property preceded by minus must not be present in numbers;\n" +
                 "- separate the parameters with one space;\n" +
                 "- enter 0 to exit.";
         System.out.println(startMessage);
@@ -165,7 +186,7 @@ public class Main {
             return stringBuilderResult.append("Instruction");
         }
 
-        // Need Try-catch on not digital ?
+        // Check & convert Input first digit
         long firstDigit;
         try {
             firstDigit = Long.parseLong(firstInputString);
@@ -193,6 +214,8 @@ public class Main {
                 stringBuilderResult.append("\tsunny: ").append(isSunny(firstDigit)).append("\n");
                 stringBuilderResult.append("\tsquare: ").append(isSquare(firstDigit)).append("\n");
                 stringBuilderResult.append("\tjumping: ").append(isJumping(firstDigit)).append("\n");
+                stringBuilderResult.append("\thappy: ").append(isHappyNumber(firstDigit)).append("\n");
+                stringBuilderResult.append("\tsad: ").append(!isHappyNumber(firstDigit)).append("\n");
             } else {
                 stringBuilderResult.append("\nThe first parameter should be a natural number or zero.\n");
             }
@@ -227,6 +250,11 @@ public class Main {
                     result1 += (isJumping(i) ? "jumping " : "");
                     result1 += (isPalindromic(String.valueOf(i)) ? "palindromic " : "");
                     result1 += (isSpy(String.valueOf(i)) ? "spy " : "");
+                    if (isHappyNumber(i)) {
+                        result1 += "happy ";
+                    } else {
+                        result1 += "sad ";
+                    }
                     result1 = result1.trim();
                     result1 = result1.replace(" ", ", ");
 
@@ -242,61 +270,64 @@ public class Main {
                 ArrayList<String> checkInput = checkInput(inputArray);
                 if (checkInput.size() == 1) {
                     stringBuilderResult.append("The property ").append(checkInput.toString().toUpperCase()).append(" is wrong.").append("\n");
-                    stringBuilderResult.append("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD, SQUARE, SUNNY, JUMPING]").append("\n");
+                    stringBuilderResult.append("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, HAPPY, SAD]").append("\n");
                     return stringBuilderResult;
                 } else if (checkInput.size() > 1) {
                     stringBuilderResult.append("The properties ").append(checkInput.toString().toUpperCase());
                     stringBuilderResult.append(" are wrong.\n");
-                    stringBuilderResult.append("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD, SQUARE, SUNNY, JUMPING]").append("\n");
+                    stringBuilderResult.append("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, HAPPY, SAD]").append("\n");
                     return stringBuilderResult;
                 }
 
                 // Check Input Property
                 if (inputArray.length > 3) {
-
-                    StringBuilder chekExclusive = new StringBuilder();
-                    for (int i = 0; i < inputArray.length; i++) {
-                        chekExclusive.append(inputArray[i]).append(" ");
-                    }
-                    chekExclusive = new StringBuilder(chekExclusive.toString().trim());
-
-                    String problemArg1 = "";
-                    String problemArg2 = "";
-                    if (chekExclusive.toString().contains("sunny") && chekExclusive.toString().contains("square")) {
-                        problemArg1 = "sunny";
-                        problemArg2 = "square";
-                        stringBuilderResult.append("The request contains mutually exclusive properties: [");
-                        stringBuilderResult.append(problemArg1.toUpperCase()).append(", ");
-                        stringBuilderResult.append(problemArg2.toUpperCase()).append("]\n");
-
-                        stringBuilderResult.append("There are no numbers with these properties.\n");
+                    if (Arrays.asList(inputArray).contains("even") && Arrays.asList(inputArray).contains("odd")) {
+                        stringBuilderResult.append("The request contains mutually exclusive properties: [EVEN, ODD]");
+                        stringBuilderResult.append("\nThere are no numbers with these properties.\n");
                         return stringBuilderResult;
                     }
-
-                    if (chekExclusive.toString().contains("spy") && chekExclusive.toString().contains("duck")) {
-                        problemArg1 = "spy";
-                        problemArg2 = "duck";
-                        stringBuilderResult.append("The request contains mutually exclusive properties: [");
-                        stringBuilderResult.append(problemArg1.toUpperCase()).append(", ");
-                        stringBuilderResult.append(problemArg2.toUpperCase()).append("]\n");
-
-                        stringBuilderResult.append("There are no numbers with these properties.\n");
+                    if (Arrays.asList(inputArray).contains("duck") && Arrays.asList(inputArray).contains("spy")) {
+                        stringBuilderResult.append("The request contains mutually exclusive properties: [DUCK, SPY]");
+                        stringBuilderResult.append("\nThere are no numbers with these properties.\n");
                         return stringBuilderResult;
                     }
-
-                    if (chekExclusive.toString().contains("even") && chekExclusive.toString().contains("odd")) {
-                        problemArg1 = "even";
-                        problemArg2 = "odd";
-                        stringBuilderResult.append("The request contains mutually exclusive properties: [");
-                        stringBuilderResult.append(problemArg1.toUpperCase()).append(", ");
-                        stringBuilderResult.append(problemArg2.toUpperCase()).append("]\n");
-
-                        stringBuilderResult.append("There are no numbers with these properties.\n");
+                    if (Arrays.asList(inputArray).contains("sunny") && Arrays.asList(inputArray).contains("square")) {
+                        stringBuilderResult.append("The request contains mutually exclusive properties: [SUNNY, SQUARE]");
+                        stringBuilderResult.append("\nThere are no numbers with these properties.\n");
                         return stringBuilderResult;
+                    }
+                    if (Arrays.asList(inputArray).contains("sad") && Arrays.asList(inputArray).contains("happy")) {
+                        stringBuilderResult.append("The request contains mutually exclusive properties: [SAD, HAPPY]");
+                        stringBuilderResult.append("\nThere are no numbers with these properties.\n");
+                        return stringBuilderResult;
+                    }
+                    if (Arrays.asList(inputArray).contains("-even") && Arrays.asList(inputArray).contains("-odd")) {
+                        stringBuilderResult.append("The request contains mutually exclusive properties: [-EVEN, -ODD]");
+                        stringBuilderResult.append("\nThere are no numbers with these properties.\n");
+                        return stringBuilderResult;
+                    }
+                    if (Arrays.asList(inputArray).contains("-duck") && Arrays.asList(inputArray).contains("-spy")) {
+                        stringBuilderResult.append("The request contains mutually exclusive properties: [-DUCK, -SPY]");
+                        stringBuilderResult.append("\nThere are no numbers with these properties.\n");
+                        return stringBuilderResult;
+                    }
+                    if (Arrays.asList(inputArray).contains("-sad") && Arrays.asList(inputArray).contains("-happy")) {
+                        stringBuilderResult.append("The request contains mutually exclusive properties: [-SAD, -HAPPY]");
+                        stringBuilderResult.append("\nThere are no numbers with these properties.\n");
+                        return stringBuilderResult;
+                    }
+                    // [GAPFUL, -GAPFUL]
+                    for (String s : inputArray) {
+                        if (Arrays.asList(inputArray).contains("-" + s)) {
+                            stringBuilderResult.append("The request contains mutually exclusive properties: [");
+                            stringBuilderResult.append(s.toUpperCase()).append(", -").append(s.toUpperCase()).append("]");
+                            stringBuilderResult.append("\nThere are no numbers with these properties.\n");
+                            return stringBuilderResult;
+
+                        }
                     }
 
                 }
-
 
                 for (long i = firstDigit, count = 0; count < secondDigit; i++) {
 
@@ -312,6 +343,11 @@ public class Main {
                     result1 += (isJumping(i) ? "jumping " : "");
                     result1 += (isPalindromic(String.valueOf(i)) ? "palindromic " : "");
                     result1 += (isSpy(String.valueOf(i)) ? "spy " : "");
+                    if (isHappyNumber(i)) {
+                        result1 += "happy ";
+                    } else {
+                        result1 += "sad ";
+                    }
                     result1 = result1.trim();
                     result1 = result1.replace(" ", ", ");
 
@@ -320,12 +356,18 @@ public class Main {
                     // Check Output
                     boolean findResult = false;
                     for (int j = 2; j < inputArray.length; j++) {
-
-                        if (result.contains(inputArray[j])) {
-                            findResult = true;
-                        } else {
+                        if (!inputArray[j].startsWith("-")) {
+                            if (result.contains(inputArray[j])) {
+                                findResult = true;
+                            } else {
+                                findResult = false;
+                                break;
+                            }
+                        } else if (result.contains(inputArray[j].substring(1))) {
                             findResult = false;
                             break;
+                        } else {
+                            findResult = true;
                         }
 
                     }
