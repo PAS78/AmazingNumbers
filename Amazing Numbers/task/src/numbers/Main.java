@@ -1,9 +1,11 @@
 package numbers;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
 
         printStartMessage();
@@ -21,44 +23,48 @@ public class Main {
         }
     }
 
-    private static int isCorrectInput(String[] inputArray) {
-        // Check correct Input param 3 & 4
-        String[] paramArray = new String[]{"buzz", "duck", "palindromic", "gapful", "spy", "even", "odd", "square", "sunny"};
-        int result = 0; // 0 - good, 2 - problem index, 3 - problem index, 4 - all index problem
+    private static ArrayList<String> checkInput(String[] inputArray) {
+        String[] paramArray = new String[]{"buzz", "duck", "palindromic", "gapful", "spy", "even", "odd", "square", "sunny", "jumping"};
+        ArrayList<String> result = new ArrayList<>();
 
-        boolean result1 = false;
-        boolean result2 = false;
+        boolean equals = false;
 
-        for (String param : paramArray) {
-            if (Objects.equals(inputArray[2], param)) {
-                result1 = true;
-                break;
-            }
-        }
+        for (int i = 2; i < inputArray.length; i++) {
 
-        if (inputArray.length == 4) {
-            for (String param : paramArray) {
-                if (Objects.equals(inputArray[3], param)) {
-                    result2 = true;
+            for (String s : paramArray) {
+                if (s.equals(inputArray[i])) {
+                    equals = true;
                     break;
+                } else {
+                    equals = false;
                 }
             }
 
-            if (result1 && result2) result = 0;
-            else if (!result1 && result2) result = 2;
-            else if (result1 && !result2) result = 3;
-            else if (!result1 && !result2) result = 4;
-            return result;
+            if (!equals) {
+                result.add(inputArray[i]);
+            }
 
         }
 
-//        int size = someString != null ? someString.length() : 0;
-//        result = result1 && result2 ? 0 : result1 ?
+        return result;
+    }
 
-        if (result1) return 0;
-        else return 2;
+    private static boolean isJumping(long n) {
+        String raw = Long.toString(n);
+        int[] num = new int[raw.length()];
 
+        for (int i = 0; i < raw.length(); i++) {
+            num[i] = raw.charAt(i) - '0';
+        }
 
+        for (int i = 0; i < num.length - 1; i++) {
+            if (num[i] - num[i + 1] != 1 && num[i] - num[i + 1] != -1) {
+                return false;
+            }
+
+        }
+
+        return true;
     }
 
     private static boolean isSunny(long n) {
@@ -102,7 +108,6 @@ public class Main {
     }
 
     private static boolean isPalindromic(String input1) {
-        // Palindromic check
         boolean palindromic = false;
         String first = input1.substring(0, input1.length() / 2);
         String second = input1.substring((input1.length() + (input1.length() % 2)) / 2);
@@ -133,7 +138,7 @@ public class Main {
     private static String[] inputUser() {
         System.out.print("\nEnter a request: ");
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine().toLowerCase().trim().split(" ");
+        return scanner.nextLine().toLowerCase().trim().split("\\s+");
     }
 
     private static void printStartMessage() {
@@ -143,8 +148,8 @@ public class Main {
                 "- enter a natural number to know its properties;\n" +
                 "- enter two natural numbers to obtain the properties of the list:\n" +
                 "  * the first parameter represents a starting number;\n" +
-                "  * the second parameters show how many consecutive numbers are to be processed;\n" +
-                "- two natural numbers and two properties to search for;\n" +
+                "  * the second parameter shows how many consecutive numbers are to be processed;\n" +
+                "- two natural numbers and properties to search for;\n" +
                 "- separate the parameters with one space;\n" +
                 "- enter 0 to exit.";
         System.out.println(startMessage);
@@ -160,8 +165,13 @@ public class Main {
             return stringBuilderResult.append("Instruction");
         }
 
-        // Need Try-catche on not digital ?
-        long firstDigit = Long.parseLong(firstInputString);
+        // Need Try-catch on not digital ?
+        long firstDigit;
+        try {
+            firstDigit = Long.parseLong(firstInputString);
+        } catch (NumberFormatException e) {
+            return stringBuilderResult.append("\nThe first parameter should be a natural number or zero.\n");
+        }
 
         // If one param
         if (inputArray.length == 1) {
@@ -182,6 +192,7 @@ public class Main {
                 stringBuilderResult.append("\tspy: ").append(isSpy(firstInputString)).append("\n");
                 stringBuilderResult.append("\tsunny: ").append(isSunny(firstDigit)).append("\n");
                 stringBuilderResult.append("\tsquare: ").append(isSquare(firstDigit)).append("\n");
+                stringBuilderResult.append("\tjumping: ").append(isJumping(firstDigit)).append("\n");
             } else {
                 stringBuilderResult.append("\nThe first parameter should be a natural number or zero.\n");
             }
@@ -213,6 +224,7 @@ public class Main {
                     result1 += (isOdd(i) ? "odd " : "");
                     result1 += (isSunny(i) ? "sunny " : "");
                     result1 += (isSquare(i) ? "square " : "");
+                    result1 += (isJumping(i) ? "jumping " : "");
                     result1 += (isPalindromic(String.valueOf(i)) ? "palindromic " : "");
                     result1 += (isSpy(String.valueOf(i)) ? "spy " : "");
                     result1 = result1.trim();
@@ -227,36 +239,62 @@ public class Main {
             // Params >= 3
             if (inputArray.length >= 3) {
                 // Check correct Input
-                int controlInput = isCorrectInput(inputArray);
-                if (controlInput == 2 || controlInput == 3) {
-                    stringBuilderResult.append("The property [").append(inputArray[controlInput].toUpperCase()).append("] is wrong.").append("\n");
-                    stringBuilderResult.append("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD, SQUARE, SUNNY]").append("\n");
+                ArrayList<String> checkInput = checkInput(inputArray);
+                if (checkInput.size() == 1) {
+                    stringBuilderResult.append("The property ").append(checkInput.toString().toUpperCase()).append(" is wrong.").append("\n");
+                    stringBuilderResult.append("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD, SQUARE, SUNNY, JUMPING]").append("\n");
                     return stringBuilderResult;
-                } else if (controlInput == 4) {
-                    // The properties [HOT, SUN] are wrong.
-                    stringBuilderResult.append("The properties [").append(inputArray[2].toUpperCase());
-                    stringBuilderResult.append(", ").append(inputArray[3].toUpperCase()).append("] are wrong.\n");
-                    stringBuilderResult.append("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD, SQUARE, SUNNY]").append("\n");
+                } else if (checkInput.size() > 1) {
+                    stringBuilderResult.append("The properties ").append(checkInput.toString().toUpperCase());
+                    stringBuilderResult.append(" are wrong.\n");
+                    stringBuilderResult.append("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, EVEN, ODD, SQUARE, SUNNY, JUMPING]").append("\n");
                     return stringBuilderResult;
                 }
 
                 // Check Input Property
                 if (inputArray.length > 3) {
-                    String chekExclusive = inputArray[2] + inputArray[3];
 
-                    if (chekExclusive.contains("sunny") && chekExclusive.contains("square") ||
-                            chekExclusive.contains("spy") && chekExclusive.contains("duck") ||
-                            chekExclusive.contains("even") && chekExclusive.contains("odd")) {
-
-                        stringBuilderResult.append("The request contains mutually exclusive properties: [");
-                        stringBuilderResult.append(inputArray[2].toUpperCase()).append(", ");
-                        stringBuilderResult.append(inputArray[3].toUpperCase()).append("]\n");
-                        stringBuilderResult.append("There are no numbers with these properties.\n");
-
-                        return stringBuilderResult;
-
-
+                    StringBuilder chekExclusive = new StringBuilder();
+                    for (int i = 0; i < inputArray.length; i++) {
+                        chekExclusive.append(inputArray[i]).append(" ");
                     }
+                    chekExclusive = new StringBuilder(chekExclusive.toString().trim());
+
+                    String problemArg1 = "";
+                    String problemArg2 = "";
+                    if (chekExclusive.toString().contains("sunny") && chekExclusive.toString().contains("square")) {
+                        problemArg1 = "sunny";
+                        problemArg2 = "square";
+                        stringBuilderResult.append("The request contains mutually exclusive properties: [");
+                        stringBuilderResult.append(problemArg1.toUpperCase()).append(", ");
+                        stringBuilderResult.append(problemArg2.toUpperCase()).append("]\n");
+
+                        stringBuilderResult.append("There are no numbers with these properties.\n");
+                        return stringBuilderResult;
+                    }
+
+                    if (chekExclusive.toString().contains("spy") && chekExclusive.toString().contains("duck")) {
+                        problemArg1 = "spy";
+                        problemArg2 = "duck";
+                        stringBuilderResult.append("The request contains mutually exclusive properties: [");
+                        stringBuilderResult.append(problemArg1.toUpperCase()).append(", ");
+                        stringBuilderResult.append(problemArg2.toUpperCase()).append("]\n");
+
+                        stringBuilderResult.append("There are no numbers with these properties.\n");
+                        return stringBuilderResult;
+                    }
+
+                    if (chekExclusive.toString().contains("even") && chekExclusive.toString().contains("odd")) {
+                        problemArg1 = "even";
+                        problemArg2 = "odd";
+                        stringBuilderResult.append("The request contains mutually exclusive properties: [");
+                        stringBuilderResult.append(problemArg1.toUpperCase()).append(", ");
+                        stringBuilderResult.append(problemArg2.toUpperCase()).append("]\n");
+
+                        stringBuilderResult.append("There are no numbers with these properties.\n");
+                        return stringBuilderResult;
+                    }
+
                 }
 
 
@@ -271,6 +309,7 @@ public class Main {
                     result1 += (isOdd(i) ? "odd " : "");
                     result1 += (isSunny(i) ? "sunny " : "");
                     result1 += (isSquare(i) ? "square " : "");
+                    result1 += (isJumping(i) ? "jumping " : "");
                     result1 += (isPalindromic(String.valueOf(i)) ? "palindromic " : "");
                     result1 += (isSpy(String.valueOf(i)) ? "spy " : "");
                     result1 = result1.trim();
@@ -278,10 +317,20 @@ public class Main {
 
                     result += result1 + "\n";
 
-                    if (inputArray.length == 3 && result.contains(inputArray[2])) {
-                        count++;
-                        stringBuilderResult.append(result);
-                    } else if (inputArray.length == 4 && result.contains(inputArray[2]) && result.contains(inputArray[3])) {
+                    // Check Output
+                    boolean findResult = false;
+                    for (int j = 2; j < inputArray.length; j++) {
+
+                        if (result.contains(inputArray[j])) {
+                            findResult = true;
+                        } else {
+                            findResult = false;
+                            break;
+                        }
+
+                    }
+
+                    if (findResult) {
                         count++;
                         stringBuilderResult.append(result);
                     }
@@ -294,6 +343,5 @@ public class Main {
 
         return stringBuilderResult;
     }
-
 
 }
